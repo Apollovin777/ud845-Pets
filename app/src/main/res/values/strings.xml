@@ -13,6 +13,14 @@
 <resources>
     <!-- Name for the application [CHAR LIMIT=12] -->
     <string name="app_name">Pets</string>
+    <string name="petSaved">Pet saved</string>
+    <string name="petNotSaved">Pet not saved</string>
+    <string name="petUpdated">Pet updated</string>
+    <string name="petNotUpdated">Pet not updated</string>
+
+    <string name="petDeleted">Pet deleted</string>
+
+    <string name="petNotDeleted">Pet not deleted</string>
 
     <!-- Label for overflow menu option that inserts fake pet data into the app [CHAR LIMIT=20] -->
     <string name="action_insert_dummy_data">Insert Dummy Data</string>
@@ -22,6 +30,8 @@
 
     <!-- Title for the activity to add a new pet [CHAR LIMIT=20] -->
     <string name="editor_activity_title_new_pet">Add a Pet</string>
+
+    <string name="editor_activity_title_edit_pet">Edit Pet</string>
 
     <!-- Label for editor menu option to save pet and leave editor [CHAR LIMIT=20] -->
     <string name="action_save">Save</string>
@@ -58,4 +68,26 @@
 
     <!-- Label for dropdown menu option if the pet is female [CHAR LIMIT=20] -->
     <string name="gender_female">Female</string>
+
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+
+    <string name="empty_view_subtitle_text">Get started by adding a pet</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">DISCARD</string>
+    <string name="keep_editing">KEEP EDITING</string>
+
+    <string name="editor_delete_pet_successful">Pet deleted</string>
+
+    <!-- Toast message in editor when current pet has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_pet_failed">Error with deleting pet</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current pet [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this pet?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current pet [CHAR LIMIT=20] -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog button text for the option to cancel deletion of the current pet [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+    <string name="unknown_breed">Unknown breed</string>
 </resources>
