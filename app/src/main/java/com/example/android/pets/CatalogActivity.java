@@ -36,13 +36,36 @@ import com.example.android.pets.data.PetContract.PetEntry;
 /**
  * Displays list of pets that were entered and stored in the app.
  */
-public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class CatalogActivity extends AppCompatActivity {
 
     public static final int PET_LOADER = 0;
 
     ListView mListView;
     View mEmptyView;
     PetCursorAdapter mPetCursorAdapter;
+
+
+    private LoaderManager.LoaderCallbacks<Cursor> mCursorLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
+        @Override
+        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+            String[] projection = {PetEntry._ID,PetEntry.COLUMN_PET_NAME,PetEntry.COLUMN_PET_BREED};
+            return new CursorLoader(getBaseContext(), PetEntry.CONTENT_URI,
+                    projection, null, null, null);
+        }
+
+        @Override
+        public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+            mPetCursorAdapter.swapCursor(data);
+        }
+
+        @Override
+        public void onLoaderReset(Loader<Cursor> loader)
+        {
+            mPetCursorAdapter.swapCursor(null);
+        }
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +99,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
-        getSupportLoaderManager().initLoader(PET_LOADER,null,this);
+        getSupportLoaderManager().initLoader(PET_LOADER,null,mCursorLoaderCallbacks);
 
     }
 
@@ -119,21 +142,4 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         Log.v("CatalogActivity", rowsDeleted + " rows deleted from pet database");
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        String[] projection = {PetEntry._ID,PetEntry.COLUMN_PET_NAME,PetEntry.COLUMN_PET_BREED};
-        return new CursorLoader(this, PetEntry.CONTENT_URI,
-                projection, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mPetCursorAdapter.swapCursor(data);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader)
-    {
-        mPetCursorAdapter.swapCursor(null);
-    }
 }
